@@ -11,7 +11,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-const Shedule = () => {
+const Shedule = ({navigation}) => {
   const [selectTime, setSelectTime] = useState(null);
 
   const {
@@ -39,18 +39,22 @@ const Shedule = () => {
       {modelVisible && <CalenderModel />}
 
       <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
+        {/* custom header */}
         <View style={[styles.headingContainer,]}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('invoice')}>
             <Ionicons name="chevron-back" size={34} color="#dc8c4cff" />
           </TouchableOpacity>
           <Text style={[styles.headingText,{fontFamily:"ProximaNova-Regular"}]}>Select Date and Time</Text>
         </View>
+        {/* image banner section */}
         <View>
           <Image
             source={require("../../assets/banner.webp")}
             style={styles.img}
           />
         </View>
+
+        {/* main section */}
         <View style={styles.dateContainer}>
           <View style={styles.monthTitle}>
             <Text style={styles.month}>{dates[0].month}</Text>
@@ -121,6 +125,7 @@ const Shedule = () => {
             </View>
           </View>
         </View>
+        {/* footer section */}
         <View style={styles.footerContainer}>
           <Text style={{  fontFamily:"ProximaNova-Bold", fontSize: 16 }}>
             Note:

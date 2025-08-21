@@ -2,15 +2,15 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import Shedule from "./src/screen/Shedule";
 import Invoice from "./src/screen/Invoice";
 import ModelProvider from "./src/context/ModelProvider";
-import Sample from "./src/components/Sample";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { PaperProvider } from "react-native-paper";
 import { useFonts } from "expo-font";
-import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
+
+  // font configuration
     const [fontsLoaded]=useFonts({
        "ProximaNova-Regular": require("./assets/fonts/proximanova_regular.ttf"),
       "ProximaNova-Bold": require("./assets/fonts/proximanova_bold.otf"),
@@ -24,11 +24,10 @@ export default function App() {
     <PaperProvider>
       <SafeAreaProvider>
         <ModelProvider>
-           {/* <StatusBar style="dark" backgroundColor="#1e1e1e"/> */}
           <NavigationContainer>
             <Stack.Navigator screenOptions={{headerShown:false}}>
-             
-              <Stack.Screen name="Invoice" component={Invoice} />
+              <Stack.Screen name="shedule" component={Shedule}/>
+              <Stack.Screen name="invoice" component={Invoice} />
             </Stack.Navigator>
           </NavigationContainer>
         </ModelProvider>
